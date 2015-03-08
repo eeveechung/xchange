@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import RegexValidator
 
 from django.contrib.auth.models import User
 from models import *
@@ -6,6 +7,13 @@ MAX_UPLOAD_SIZE= 250000000
 class RegistrationForm(forms.Form):
     firstname = forms.CharField(max_length=20)
     lastname  = forms.CharField(max_length=20)
+    email = forms.CharField(max_length=30, required=True, validators=[
+        RegexValidator(
+            regex='(\W|^)[a-z0-9]*@(andrew\.)?cmu\.edu(\W|$)',
+            message='Must use CMU email',
+            code='invalid_email'),
+        ]
+    )
     username   = forms.CharField(max_length = 20)
     password1  = forms.CharField(max_length = 200, 
                                  label='Password', 

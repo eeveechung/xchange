@@ -11,7 +11,9 @@
 	</div>
 	<div class="jumbotron">
     	<form action="{% url 'add_item' %}" method="post" class="form-group">
-	        <textarea id="status" rows="5" cols="100" maxlength="160" name="item"></textarea><br>
+            Item Name: <input type="text" maxlength="20" name="item_name"></input><br>
+            Item Price: <input type="text" maxlength="10" name="item_price"></input><br>
+	        Description: <textarea id="status" rows="5" cols="100" maxlength="160" name="description"></textarea><br>
 	        <span id="text_counter"></span><br>
 	        <input type="submit" id="posting" class="btn btn-info" value="Add item">  
 	        <a href="{% url 'logout' %}" class="btn btn-info" role="button">Logout</a>

@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE items [
 <!ELEMENT items (item*)>
-<!ELEMENT item (user,text,time)>
+<!ELEMENT item (user,name,price,text,time)>
 <!ELEMENT user (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
 <!ELEMENT text (#PCDATA)>
 <!ELEMENT time (#PCDATA)>
 ]>
@@ -10,6 +12,8 @@
     {% for item in items %}
         <item>
             <id>{{item.id}}</id>
+            <name>{{item.name}}</name>
+            <price>{{item.price}}</price>
             <text>{{item.text}}</text>
             <ipAddr>{{item.ip_addr}}</ipAddr>
         </item>

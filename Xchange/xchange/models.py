@@ -20,12 +20,14 @@ class Profile(models.Model):
 	content_type = models.CharField(max_length=50)
 
 class Item(models.Model):
-    text = models.CharField(max_length=160)
-    user = models.ForeignKey(Profile)
-    time = models.DateTimeField(auto_now_add = True)
-    def __unicode__(self):
-        return self.text
-    def save(self, *args, **kwargs):
+	name = models.CharField(max_length=20)
+	text = models.CharField(max_length=160)
+	price = models.DecimalField(max_digits=9, decimal_places=2)
+	user = models.ForeignKey(Profile)
+	time = models.DateTimeField(auto_now_add = True)
+	def __unicode__(self):
+		return self.text
+	def save(self, *args, **kwargs):
 		if not self.id:
 			self.time = datetime.datetime.today()
 		return super(Item, self).save(*args, **kwargs)

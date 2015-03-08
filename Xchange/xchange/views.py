@@ -102,7 +102,8 @@ def add_item(request):
             items = Item.objects.all().order_by('-time')
             context = {'items' : items, 'errors' : errors}
             return render(request, 'xchange/globalstream.html', context)
-    	new_item = Item(text=request.POST['item'], user=request.user.profile)
+    	new_item = Item(name=request.POST['item_name'],price=request.POST['item_price'],
+            text=request.POST['description'], user=request.user.profile)
     	new_item.save()
     items = Item.objects.all().order_by('-time')
     context = {'items' : items, 'errors' : errors}
@@ -159,7 +160,9 @@ def get_post_json(request):
             "time":str(item.time), 
             "username":item.user.profile_user.username, 
             "userid":item.user.profile_user.id,
-            "text":item.text})
+            "name":item.name,
+            "text":item.text,
+            "price":item.price})
     response_text = json.dumps(tempList) #dump list as JSON
     return HttpResponse(response_text, content_type='application/json')
 

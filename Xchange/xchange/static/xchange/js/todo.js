@@ -32,7 +32,9 @@ function handleResponse() {
         var itemid = items[i]["itemid"];
         var userid = items[i]["userid"];
         var username = items[i]["username"];
+        var name = items[i]["name"];
         var text = items[i]["text"];
+        var price = items[i]["price"];
         var time = items[i]["time"];
         var comments = items[i]["comments"];
         
